@@ -837,10 +837,15 @@ em {
    10. SECTIONS — base
    ============================================================ */
 #videoFrame {
+  opacity: 1 !important;
   width: 100%;
   aspect-ratio: 16 / 9;
   border: none;
   display: none;
+}
+
+.video__player.is-visible #videoFrame {
+  opacity: 1;
 }
 
 .section {
