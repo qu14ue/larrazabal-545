@@ -533,16 +533,33 @@ em {
    8. HERO
    ============================================================ */
 
+/* Base: mobile + propiedades compartidas */
 .hero {
   position: relative;
   display: flex;
   isolation: isolate;
   flex-direction: column;
-  justify-content: flex-end;
   overflow: hidden;
-  min-height: 100svh;
-  min-height: 100vh;
-  padding-bottom: 48px;
+  padding-top: 128px;
+  padding-bottom: 96px;
+}
+
+/* Tablet/Desktop pequeño: 769px - 1440px */
+@media (min-width: 769px) {
+  .hero {
+    padding-bottom: 128px;
+  }
+}
+
+/* Desktop grande: >1440px */
+@media (min-width: 1441px) {
+  .hero {
+    min-height: 100vh;
+    min-height: 100svh;
+    justify-content: flex-end;
+    padding-top: 0;
+    padding-bottom: 48px;
+  }
 }
 
 .hero__bg {
@@ -701,10 +718,6 @@ em {
 }
 
 @media (min-width:768px){
-  .hero {
-    padding-bottom: 64px;
-  }
-
   .hero__chapter {
     margin-bottom: 32px;
     font-size: 11px;
@@ -720,6 +733,7 @@ em {
   }
 
 }
+
 
 .hero__scroll {
   display: none;
@@ -745,6 +759,54 @@ em {
 
 }
 
+
+/* ── Hero en pantallas de poca altura (landscape mobile, etc.) ── */
+@media (max-height: 600px) {
+  .hero {
+    min-height: auto;
+    padding-top: calc(var(--nav-h) + 40px);
+    padding-bottom: 40px;
+    justify-content: flex-start;
+  }
+
+  .hero__chapter {
+    margin-bottom: 12px;
+  }
+
+  .hero__title {
+    font-size: clamp(28px, 6vw, 44px);
+    margin-bottom: 14px;
+  }
+
+  .hero__sub {
+    margin-bottom: 18px;
+    font-size: 14px;
+  }
+
+  .hero__price-line {
+    margin-bottom: 16px;
+  }
+
+  .hero__legal,
+  .hero__scroll {
+    display: none;
+  }
+}
+
+@media (max-height: 480px) {
+  .hero {
+    padding-top: calc(var(--nav-h) + 24px);
+    padding-bottom: 32px;
+  }
+
+  .hero__chapter {
+    margin-bottom: 8px;
+  }
+
+  .hero__sub {
+    display: none;
+  }
+}
 
 /* ============================================================
    9. META BAR (banda después de hero)
@@ -3038,7 +3100,7 @@ em {
     </div>
   </div>
   <div class="hero__scroll">Scroll</div>
-  <div class="hero__legal">Imagen del living con ambientación sugerida — no representa el mobiliario real</div>
+  <!-- <div class="hero__legal">Imagen del living con ambientación sugerida — no representa el mobiliario real</div> -->
 </section>
 
 <!-- META BAR -->
