@@ -1487,16 +1487,97 @@ em {
   color: rgba(255,255,255,.45);
 }
 
-@media (max-width:768px){
-  .precio-table thead th:last-child,
-  .precio-table td.col-alt {
+@media (max-width: 768px) {
+  /* Reset: tabla → bloques */
+  .precio-table,
+  .precio-table thead,
+  .precio-table tbody,
+  .precio-table tr,
+  .precio-table th,
+  .precio-table td {
+    display: block;
+  }
+
+  /* Ocultar encabezado original (labels se insertan via ::before) */
+  .precio-table thead {
     display: none;
   }
 
-  .precio-table td:first-child {
-    width: 45%;
+  /* margin-bottom reducido */
+  .precio-table {
+    margin-bottom: 40px;
   }
 
+  /* Cada fila = card con flex wrap */
+  .precio-table tbody tr {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+    border: 1px solid rgba(255,255,255,.1);
+    border-radius: 8px;
+    overflow: hidden;
+    background: rgba(255,255,255,.06);
+  }
+
+  .precio-table tbody tr:hover {
+    background: rgba(255,255,255,.08);
+  }
+
+  /* Label de la feature — fila completa */
+  .precio-table td:first-child {
+    width: 100%;
+    padding: 12px 16px 10px;
+    border-bottom: 1px solid rgba(255,255,255,.08);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,.4);
+  }
+
+  /* Columnas de valor: mitad cada una */
+  .precio-table td.col-prop,
+  .precio-table td.col-alt {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    padding: 12px 14px 14px;
+    word-break: break-word;
+    overflow-wrap: break-word;
+  }
+
+  .precio-table td.col-prop {
+    border-right: 1px solid rgba(255,255,255,.08);
+    font-size: 14px;
+  }
+
+  .precio-table td.col-alt {
+    font-size: 13px;
+    color: rgba(255,255,255,.4);
+  }
+
+  /* Micro-headers via ::before */
+  .precio-table td.col-prop::before {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--orange);
+    content: "Larrazabal 545";
+  }
+
+  .precio-table td.col-alt::before {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,.3);
+    content: "Zona premium";
+  }
 }
 
 
@@ -2936,78 +3017,6 @@ em {
 }
 
 
-/* ============================================================
-   TABLA PRECIO → CARDS APILADAS en mobile ≤ 640px
-   ============================================================ */
-
-@media (max-width:640px){
-  /* Reset tabla a bloque */
-
-  .precio-table,
-  .precio-table thead,
-  .precio-table tbody,
-  .precio-table tr,
-  .precio-table th,
-  .precio-table td {
-    display: block;
-  }
-
-
-  /* Ocultar encabezado */
-
-  .precio-table thead {
-    display: none;
-  }
-
-
-  /* Cada fila = card */
-
-  .precio-table tbody tr {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    margin-bottom: 10px;
-    padding: 16px 20px;
-    border: 1px solid rgba(255,255,255,.1);
-    border-radius: 8px;
-    background: rgba(255,255,255,.06);
-  }
-
-  .precio-table tbody tr:hover {
-    background: rgba(255,255,255,.08);
-  }
-
-
-  /* Celda label (feature) */
-
-  .precio-table td:first-child {
-    width: 100%;
-    padding: 0;
-    border-bottom: none;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,.4);
-  }
-
-
-  /* Valor Larrazabal */
-
-  .precio-table td.col-prop {
-    padding: 0;
-    border-bottom: none;
-    font-size: 17px;
-  }
-
-
-  /* Ocultar columna comparativa */
-
-  .precio-table td.col-alt {
-    display: none;
-  }
-
-}
 
 </style>
 </head>
@@ -3346,18 +3355,18 @@ em {
         <tbody>
           <tr>
             <td>Ticket (107 m² + terraza)</td>
-            <td class="col-prop"><strong>USD 295.000</strong></td>
+            <td class="col-prop">USD 295.000</td>
             <td class="col-alt">USD 370.000 – 400.000</td>
           </tr>
           <tr>
             <td>Cochera cubierta</td>
-            <td class="col-prop"><strong>Incluida en el precio</strong></td>
+            <td class="col-prop">Incluida en el precio</td>
             <td class="col-alt">+USD 25.000 – 40.000 aparte</td>
           </tr>
           <tr>
             <td>Expensas mensuales</td>
-            <td class="col-prop"><strong>$ 190.000</strong></td>
-            <td class="col-alt">$ 280.000 – 400.000</td>
+            <td class="col-prop">$ 190.000</td>
+            <td class="col-alt">$ 380.000</td>
           </tr>
           <tr>
             <td>Palier privado</td>
@@ -3366,7 +3375,7 @@ em {
           </tr>
           <tr>
             <td>Paredes con vecinos</td>
-            <td class="col-prop"><strong>Ninguna</strong></td>
+            <td class="col-prop">Ninguna</td>
             <td class="col-alt">2 a 4 medianeras compartidas</td>
           </tr>
           <tr>
