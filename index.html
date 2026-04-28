@@ -2102,6 +2102,43 @@ em {
   width: 100%;
   height: 100%;
   border: none;
+  opacity: 0;
+  transition: opacity .4s ease;
+}
+
+.ubicacion__map iframe.is-loaded {
+  opacity: 1;
+}
+
+.map-placeholder {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+  justify-content: center;
+  background: var(--paper-alt);
+  transition: opacity .4s ease;
+}
+
+.map-placeholder.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.map-placeholder__pin {
+  width: 40px;
+  height: 40px;
+  color: var(--orange);
+}
+
+.map-placeholder__label {
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  color: var(--ink-muted);
 }
 
 .ubicacion__copy .eyebrow {
@@ -3131,7 +3168,7 @@ em {
 <section class="gancho" data-screen-label="02 Gancho">
   <div class="gancho__sticky">
     <div class="gancho__image">
-      <img src="assets/img/1200x1200/cocina-muebles_1.webp" alt="Cocina con Isla Larrazabal 545 - Liniers" loading="lazy">
+      <img src="assets/img/1200x1200/cocina-muebles_1.webp" alt="Cocina con Isla Larrazabal 545 - Liniers" decoding="async">
     </div>
     <div class="gancho__text reveal">
       <div class="gancho__chapter">El departamento que soñaste</div>
@@ -3181,7 +3218,7 @@ em {
 <section class="pilar" data-screen-label="04 Pilar · Palier privado">
   <div class="pilar__grid">
     <div class="pilar__image">
-      <img src="assets/img/1200x1200/palier-01-1200.webp" alt="Palier privado exclusivo del 7° piso" loading="lazy">
+      <img src="assets/img/1200x1200/palier-01-1200.webp" alt="Palier privado exclusivo del 7° piso" decoding="async">
     </div>
     <div class="pilar__text reveal">
       <div class="pilar__chapter">Palier Privado</div>
@@ -3224,7 +3261,7 @@ em {
 <section class="pilar pilar--soft" data-screen-label="05 Pilar · Altura">
   <div class="pilar__grid pilar__grid--reverse">
     <div class="pilar__image">
-      <img src="assets/img/1200x1200/balcon-terraza-02-1200.webp" alt="Vista abierta del barrio desde el 7° piso" loading="lazy">
+      <img src="assets/img/1200x1200/balcon-terraza-02-1200.webp" alt="Vista abierta del barrio desde el 7° piso" decoding="async">
     </div>
     <div class="pilar__text reveal">
       <div class="pilar__chapter">Vista despejada</div>
@@ -3261,7 +3298,7 @@ em {
      ============================================================ -->
 <section class="pilar pilar--full" data-screen-label="06 Pilar · Terraza">
   <div class="pilar__cover">
-    <img src="assets/img/staging/balcon-natural.webp" alt="Balcón terraza con parrilla encendida — ambientación sugerida" loading="lazy">
+    <img src="assets/img/staging/balcon-natural.webp" alt="Balcón terraza con parrilla encendida — ambientación sugerida" decoding="async" loading="lazy">
     <span class="pilar__cover-legal">Ambientación sugerida · No representa el mobiliario real</span>
   </div>
   <div class="pilar__center reveal">
@@ -3299,7 +3336,7 @@ em {
 <section class="pilar" data-screen-label="07 Pilar · Barrio">
   <div class="pilar__grid pilar__grid--wide">
     <div class="pilar__image">
-      <img src="assets/img/1200x1200/exterior_1.webp" alt="Edificio Larrazabal 545 — calle tranquila de Liniers" loading="lazy">
+      <img src="assets/img/1200x1200/exterior_1.webp" alt="Edificio Larrazabal 545 — calle tranquila de Liniers" decoding="async" loading="lazy">
     </div>
     <div class="pilar__text reveal">
       <div class="pilar__chapter">El barrio</div>
@@ -3431,17 +3468,17 @@ em {
   </div>
 
   <div class="staged__hero reveal">
-    <img src="assets/img/staging/premium-2.webp" alt="Living-comedor-cocina con ambientación sugerida" loading="lazy">
+    <img src="assets/img/staging/premium-2.webp" alt="Living-comedor-cocina con ambientación sugerida" decoding="async" loading="lazy">
     <span class="staged__legal">Ambientación sugerida · No representa el mobiliario real</span>
   </div>
 
   <div class="staged__duo">
     <div class="staged__duo-item reveal">
-      <img src="assets/img/staging/premium-1.webp" alt="Cocina con isla y living al fondo — ambientación sugerida" loading="lazy">
+      <img src="assets/img/staging/premium-1.webp" alt="Cocina con isla y living al fondo — ambientación sugerida" decoding="async" loading="lazy">
       <span class="staged__legal">Ambientación sugerida · No representa el mobiliario real</span>
     </div>
     <div class="staged__duo-item reveal">
-      <img src="assets/img/staging/balcon-natural.webp" alt="Balcón terraza con parrilla — ambientación sugerida" loading="lazy">
+      <img src="assets/img/staging/balcon-natural.webp" alt="Balcón terraza con parrilla — ambientación sugerida" decoding="async" loading="lazy">
       <span class="staged__legal">Ambientación sugerida · No representa el mobiliario real</span>
     </div>
   </div>
@@ -3465,83 +3502,83 @@ em {
     <div id="galeriaGrid" class="galeria__grid" data-track="gallery_open">
       <!-- 1 → exterior ingreso (horizontal) -->
       <div class="galeria__item" data-idx="0">
-        <img src="assets/img/1200x628/exterior-01.webp" alt="Fachada del edificio Larrazabal 545" loading="lazy">
+        <img src="assets/img/1200x628/exterior-01.webp" alt="Fachada del edificio Larrazabal 545" decoding="async" loading="lazy">
       </div>
       <!-- 2 → palier privado (cuadrada) -->
       <div class="galeria__item" data-idx="1">
-        <img src="assets/img/1200x1200/palier-01-1200.webp" alt="Palier privado del 7° piso" loading="lazy">
+        <img src="assets/img/1200x1200/palier-01-1200.webp" alt="Palier privado del 7° piso" decoding="async">
       </div>
       <!-- 3 → cocina vertical (tall) -->
       <div class="galeria__item galeria__item--tall" data-idx="2">
-        <img src="assets/img/870x1200/bano-principal-04.webp" alt="Baño principal" loading="lazy">
+        <img src="assets/img/870x1200/bano-principal-04.webp" alt="Baño principal" decoding="async" loading="lazy">
       </div>
       <!-- 4 → living 1 (cuadrada) -->
       <div class="galeria__item" data-idx="3">
-        <img src="assets/img/1200x1200/living01-1200.webp" alt="Living comedor amplio" loading="lazy">
+        <img src="assets/img/1200x1200/living01-1200.webp" alt="Living comedor amplio" decoding="async" loading="lazy">
       </div>
       <!-- 5 → living con balcón (horizontal) -->
       <div class="galeria__item" data-idx="4">
-        <img src="assets/img/1200x628/living-01.webp" alt="Living con salida al balcón terraza" loading="lazy">
+        <img src="assets/img/1200x628/living-01.webp" alt="Living con salida al balcón terraza" decoding="async" loading="lazy">
       </div>
       <!-- 6 → terraza panorámica (cuadrada) -->
       <div class="galeria__item" data-idx="5">
-        <img src="assets/img/1200x628/cocina.webp" alt="Cocina con vista a Balcón Terraza" loading="lazy">
+        <img src="assets/img/1200x628/cocina.webp" alt="Cocina con vista a Balcón Terraza" decoding="async" loading="lazy">
       </div>
       <!-- 7 → cocina detalle vertical (tall) -->
       <div class="galeria__item galeria__item--tall" data-idx="6">
-        <img src="assets/img/870x1200/cocina-03.webp" alt="Detalle cocina semi-integrada y hormigón visto" loading="lazy">
+        <img src="assets/img/870x1200/cocina-03.webp" alt="Detalle cocina semi-integrada y hormigón visto" decoding="async" loading="lazy">
       </div>
       <!-- 8 → terraza vista barrio (cuadrada) -->
       <div class="galeria__item" data-idx="7">
-        <img src="assets/img/1200x1200/balcon-terraza-02-1200.webp" alt="Vista abierta del barrio desde la terraza" loading="lazy">
+        <img src="assets/img/1200x1200/balcon-terraza-02-1200.webp" alt="Vista abierta del barrio desde la terraza" decoding="async">
       </div>
       <!-- 9 → terraza detalle (horizontal) -->
       <div class="galeria__item" data-idx="8">
-        <img src="assets/img/1200x628/balcon-terraza.webp" alt="Detalle parrilla propia integrada" loading="lazy">
+        <img src="assets/img/1200x628/balcon-terraza.webp" alt="Detalle parrilla propia integrada" decoding="async" loading="lazy">
       </div>
       <!-- 10 → living 2 (horizontal) -->
       <div class="galeria__item" data-idx="9">
-        <img src="assets/img/1200x628/living-02.webp" alt="Living vista completa" loading="lazy">
+        <img src="assets/img/1200x628/living-02.webp" alt="Living vista completa" decoding="async" loading="lazy">
       </div>
       <!-- 11 → dormitorio suite (horizontal) -->
       <div class="galeria__item" data-idx="10">
-        <img src="assets/img/1200x628/dormitorio-01.webp" alt="Suite principal" loading="lazy">
+        <img src="assets/img/1200x628/dormitorio-01.webp" alt="Suite principal" decoding="async" loading="lazy">
       </div>
       <!-- 12 → living 3 vertical (tall) -->
       <div class="galeria__item galeria__item--tall" data-idx="11">
-        <img src="assets/img/1200x628/living-01.webp" alt="Detalle cielorraso hormigón visto" loading="lazy">
+        <img src="assets/img/1200x628/living-01.webp" alt="Detalle cielorraso hormigón visto" decoding="async" loading="lazy">
       </div>
       <!-- 13 → dormitorio 2 (horizontal) -->
       <div class="galeria__item" data-idx="12">
-        <img src="assets/img/1200x628/dormitorio-02.webp" alt="Dormitorio secundario con placard" loading="lazy">
+        <img src="assets/img/1200x628/dormitorio-02.webp" alt="Dormitorio secundario con placard" decoding="async" loading="lazy">
       </div>
       <!-- 14 → baño suite (cuadrada) -->
       <div class="galeria__item" data-idx="13">
-        <img src="assets/img/1200x1200/bano-01-1200.webp" alt="Baño en suite principal" loading="lazy">
+        <img src="assets/img/1200x1200/bano-01-1200.webp" alt="Baño en suite principal" decoding="async" loading="lazy">
       </div>
       <!-- 15 → dormitorio 3 (horizontal) -->
       <div class="galeria__item" data-idx="14">
-        <img src="assets/img/1200x628/dormitorio-03.webp" alt="Dormitorio 3" loading="lazy">
+        <img src="assets/img/1200x628/dormitorio-03.webp" alt="Dormitorio 3" decoding="async" loading="lazy">
       </div>
       <!-- 16 → pasillo vertical (tall) -->
       <div class="galeria__item galeria__item--tall" data-idx="15">
-        <img src="assets/img/870x1200/pasillo-01.webp" alt="Distribución interna del semipiso" loading="lazy">
+        <img src="assets/img/870x1200/pasillo-01.webp" alt="Distribución interna del semipiso" decoding="async" loading="lazy">
       </div>
       <!-- 17 → baño secundario (horizontal) -->
       <div class="galeria__item" data-idx="16">
-        <img src="assets/img/1200x628/bano-principal.webp" alt="Baño secundario completo" loading="lazy">
+        <img src="assets/img/1200x628/bano-principal.webp" alt="Baño secundario completo" decoding="async" loading="lazy">
       </div>
       <!-- 18 → dormitorio 4 (horizontal) -->
       <div class="galeria__item" data-idx="17">
-        <img src="assets/img/1200x628/dormitorio-04.webp" alt="Dormitorio 4" loading="lazy">
+        <img src="assets/img/1200x628/dormitorio-04.webp" alt="Dormitorio 4" decoding="async" loading="lazy">
       </div>
       <!-- 19 → terraza 2 (horizontal) -->
       <div class="galeria__item" data-idx="18">
-        <img src="assets/img/1200x628/balcon-terraza-02.webp" alt="Terraza — vista lateral" loading="lazy">
+        <img src="assets/img/1200x628/balcon-terraza-02.webp" alt="Terraza — vista lateral" decoding="async" loading="lazy">
       </div>
       <!-- 20 → cochera (cuadrada) -->
       <div class="galeria__item" data-idx="19">
-        <img src="assets/img/1200x1200/cochera-1200.webp" alt="Cochera cubierta fija en planta baja" loading="lazy">
+        <img src="assets/img/1200x1200/cochera-1200.webp" alt="Cochera cubierta fija en planta baja" decoding="async" loading="lazy">
       </div>
     </div>
   </div>
@@ -3709,10 +3746,14 @@ em {
     <div class="ubicacion__grid">
 
       <div class="ubicacion__map reveal">
+        <div id="mapPlaceholder" class="map-placeholder" aria-hidden="true">
+          <svg class="map-placeholder__pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+          <span class="map-placeholder__label">Larrazabal 545 · Liniers</span>
+        </div>
         <iframe
-          src="https://maps.google.com/maps?q=Larrazabal+545,+Liniers,+Buenos+Aires,+Argentina&output=embed&z=15"
+          id="mapFrame"
+          data-src="https://maps.google.com/maps?q=Larrazabal+545,+Liniers,+Buenos+Aires,+Argentina&output=embed&z=15"
           title="Ubicación Larrazabal 545, Liniers"
-          loading="lazy"
           allowfullscreen
           referrerpolicy="no-referrer-when-downgrade">
         </iframe>
@@ -3811,7 +3852,7 @@ em {
   <div class="asesor__grid">
 
     <div class="asesor__photo">
-      <img src="assets/img/asesor/ariel-kuznicky-01.webp" alt="Ariel Kuznicki — AKPROP" loading="lazy">
+      <img src="assets/img/asesor/ariel-kuznicky-01.webp" alt="Ariel Kuznicki — AKPROP" decoding="async" loading="lazy">
     </div>
 
     <div class="asesor__copy reveal">
@@ -4119,6 +4160,23 @@ em {
     });
   }
 
+  // 3b. Google Maps lazy load — facade pattern
+  const mapFrame       = document.getElementById('mapFrame');
+  const mapPlaceholder = document.getElementById('mapPlaceholder');
+  if (mapFrame && mapPlaceholder) {
+    const mapIO = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) {
+        mapFrame.src = mapFrame.dataset.src;
+        mapFrame.addEventListener('load', () => {
+          mapFrame.classList.add('is-loaded');
+          mapPlaceholder.classList.add('is-hidden');
+        }, { once: true });
+        mapIO.disconnect();
+      }
+    }, { rootMargin: '0px 0px 400px 0px' });
+    mapIO.observe(mapFrame);
+  }
+
   // 4. Reveal on scroll
   const io = new IntersectionObserver((entries) => {
     entries.forEach(e => {
@@ -4127,7 +4185,7 @@ em {
         io.unobserve(e.target);
       }
     });
-  }, {threshold:0.15, rootMargin:'0px 0px -8% 0px'});
+  }, {threshold:0.05, rootMargin:'0px 0px 300px 0px'});
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
   // 5. Galería lightbox
@@ -4182,4 +4240,59 @@ em {
       const contacto = ctaForm.contacto.value.trim();
       const horario  = ctaForm.horario.value.trim();
       if (!nombre || !contacto) {
-        ctaForm.nombre.st
+        ctaForm.nombre.style.borderColor   = nombre   ? '' : 'var(--orange)';
+        ctaForm.contacto.style.borderColor = contacto ? '' : 'var(--orange)';
+        return;
+      }
+      let msg = `Hola, soy ${nombre}. Me interesa la propiedad en Larrazabal 545 (AAP7883154) que vi en la web.`;
+      if (horario) msg += ` Mi disponibilidad: ${horario}.`;
+      msg += ` Mi contacto: ${contacto}.`;
+      window.open(`https://wa.me/5491125466099?text=${encodeURIComponent(msg)}`, '_blank');
+      ctaForm.style.display = 'none';
+      ctaConfirm.classList.add('is-visible');
+    });
+  }
+
+  // 7. Word cycling — H1 hero
+  (() => {
+  const words = ['ceder','resignar','negociar','justificar','extrañar'];
+  const wcA = document.getElementById('wcA');
+  const wcB = document.getElementById('wcB');
+  if (!wcA || !wcB) return;
+
+  let idx = 0;
+  let front = wcA;
+  let back  = wcB;
+
+  function advance() {
+    idx = (idx + 1) % words.length;
+
+    back.textContent    = words[idx];
+    back.style.position = 'absolute';
+    back.style.left     = '-9999px';
+    back.style.display  = 'inline';
+    back.style.opacity  = '0';
+
+    // crossfade simultáneo
+    requestAnimationFrame(() => {
+      front.style.opacity = '0';
+      back.style.opacity  = '1';
+
+      setTimeout(() => {
+        front.style.display   = 'none';
+        front.style.opacity   = '0';
+        back.style.position   = '';
+        back.style.left       = '';
+        [front, back] = [back, front];
+      }, 500);
+    });
+  }
+
+  setInterval(advance, 3000);
+  })();
+
+})();
+
+</script>
+</body>
+</html>
