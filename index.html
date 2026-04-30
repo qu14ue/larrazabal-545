@@ -3223,7 +3223,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
       <iframe
         id="videoFrame"
-        data-src="https://www.youtube.com/embed/qwxtOoFD6RU?autoplay=1&rel=0"
+        data-src="https://www.youtube.com/embed/qwxtOoFD6RU?autoplay=1&rel=0&enablejsapi=1"
         title="Recorrido Larrazabal 545"
         allow="autoplay; encrypted-media; picture-in-picture"
         allowfullscreen>
@@ -4190,6 +4190,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     poster.addEventListener('click', () => {
       frame.src = frame.dataset.src;
       poster.classList.add('is-hidden');
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({ event: 'video_play', video_id: 'qwxtOoFD6RU' });
     });
   }
 
