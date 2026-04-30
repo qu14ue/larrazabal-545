@@ -4249,24 +4249,48 @@ em {
     if (e.key === 'ArrowRight') lboxNav(1);
   });
 
-  // 6. CTA Form → WhatsApp
+  // 6. CTA Form → Tokko CRM + WhatsApp fallback
   const ctaForm = document.getElementById('ctaForm');
   const ctaConfirm = document.getElementById('ctaConfirm');
   if (ctaForm) {
-    ctaForm.addEventListener('submit', e => {
+    ctaForm.addEventListener('submit', async e => {
       e.preventDefault();
       const nombre   = ctaForm.nombre.value.trim();
       const contacto = ctaForm.contacto.value.trim();
+      const email    = ctaForm.email.value.trim();
       const horario  = ctaForm.horario.value.trim();
-      if (!nombre || !contacto) {
+      const emailOk  = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+      // Validación visual
+      if (!nombre || !contacto || !emailOk) {
         ctaForm.nombre.style.borderColor   = nombre   ? '' : 'var(--orange)';
         ctaForm.contacto.style.borderColor = contacto ? '' : 'var(--orange)';
+        ctaForm.email.style.borderColor    = emailOk  ? '' : 'var(--orange)';
         return;
       }
-      let msg = `Hola, soy ${nombre}. Me interesa la propiedad en Larrazabal 545 (AAP7883154) que vi en la web.`;
-      if (horario) msg += ` Mi disponibilidad: ${horario}.`;
-      msg += ` Mi contacto: ${contacto}.`;
-      window.open(`https://wa.me/5491125466099?text=${encodeURIComponent(msg)}`, '_blank');
+
+      // Loading state
+      const btn = ctaForm.querySelector('.cta-form__submit');
+      btn.disabled = true;
+      btn.style.opacity = '0.6';
+
+      // Mensaje WhatsApp (fallback siempre disponible)
+      let waMsg = `Hola, soy ${nombre}. Me interesa la propiedad en Larrazabal 545 (AAP7883154) que vi en la web.`;
+      if (horario) waMsg += ` Mi disponibilidad: ${horario}.`;
+      waMsg += ` Mi contacto: ${contacto}. Email: ${email}.`;
+      const waUrl = `https://wa.me/5491125466099?text=${encodeURIComponent(waMsg)}`;
+
+      // Enviar a Tokko vía CF Function (fallo silencioso — WhatsApp cubre igual)
+      try {
+        await fetch('/api/lead', {
+          method:  'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body:    JSON.stringify({ nombre, email, contacto, horario }),
+        });
+      } catch (_) { /* silencioso */ }
+
+      // Abrir WhatsApp y confirmar
+      window.open(waUrl, '_blank');
       ctaForm.style.display = 'none';
       ctaConfirm.classList.add('is-visible');
     });
