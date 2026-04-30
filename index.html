@@ -59,7 +59,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </script>
 
 <!-- Favicon -->
-<link rel="icon" href="assets/logos/akprop-negro.png" type="image/png">
+<link rel="icon" href="assets/logos/favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="assets/logos/favicon.png">
+<meta name="theme-color" content="#0e0e0e">
 
 <!-- Preload hero image (LCP) -->
 <link rel="preload" href="assets/img/hero/hero-living.webp" as="image" type="image/webp" fetchpriority="high">
@@ -357,6 +359,7 @@ em {
   height: var(--nav-h);
   background: linear-gradient(to bottom, rgba(0,0,0,.55), transparent);
   transition: background .35s var(--ease), backdrop-filter .35s var(--ease);
+  will-change: transform;
 }
 
 .nav.is-solid {
