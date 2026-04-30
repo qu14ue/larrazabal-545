@@ -1056,6 +1056,24 @@ em {
   letter-spacing: -0.01em;
   color: var(--ink-soft);
 }
+.gancho__lista {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 20px;
+}
+.gancho__lista li {
+  font-family: var(--f-serif);
+  font-size: clamp(18px,1.8vw,22px);
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+  color: var(--ink-soft);
+  padding: 0.15em 0;
+}
+.gancho__lista li::before {
+  content: "* ";
+  color: var(--orange);
+}
 
 .gancho__highlight {
   margin-top: 40px;
@@ -1295,6 +1313,22 @@ em {
   font-weight: 400;
   line-height: 1.75;
   color: var(--ink-soft);
+}
+.pilar__lista {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 18px;
+}
+.pilar__lista li {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.75;
+  color: var(--ink-soft);
+  padding: 0.1em 0;
+}
+.pilar__lista li::before {
+  content: "* ";
+  color: var(--orange);
 }
 
 .pilar__chips {
@@ -3199,8 +3233,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="gancho__chapter">El departamento que soñaste</div>
       <h2 class="gancho__title">Sabés exactamente<br>qué te <em>molesta.</em></h2>
       <div class="gancho__body">
-        <p>El ruido de la avenida. La parrilla que hay que reservar. El balcón que da a otra pared. El vecino en el mismo palier.</p>
-        <p>No es que los departamentos que viste estaban mal. Es que ninguno terminaba de encajar. Siempre había algo que ceder.</p>
+        <ul class="gancho__lista">
+          <li>El ruido de la avenida</li>
+          <li>La parrilla que hay que reservar</li>
+          <li>El balcón que da a otra pared</li>
+          <li>El vecino en el mismo palier</li>
+        </ul>
+        <p>No es que los departamentos que viste estaban mal, es que ninguno terminaba de encajar. Siempre había algo que ceder.</p>
       </div>
       <div class="gancho__highlight">En Larrazabal 545 no cedés nada. Tu seguridad, privacidad y tranquilidad, son solo tuyas.</div>
     </div>
@@ -3292,7 +3331,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="pilar__chapter">Vista despejada</div>
       <h2 class="pilar__title">En Palermo, desde un 7° piso<br>ves otro 7° piso.<br>Acá ves <em>el barrio.</em></h2>
       <div class="pilar__body">
-        <p>Desde el séptimo piso de Larrazabal 545 se ve el horizonte. No el edificio de enfrente. No la medianera del de al lado. El barrio. Los techos. El cielo.</p>
+        <p>Desde el séptimo piso de Larrazabal 545 se ve el horizonte.</p>
+        <ul class="pilar__lista">
+          <li>No se ve un edificio enfrente.</li>
+          <li>No se ve la medianera de al lado.</li>
+          <li>Se ve el barrio.</li>
+          <li>Se ven los techos.</li>
+          <li>Se ve el cielo.</li>
+        </ul>
         <p>Liniers todavía es una zona de baja densidad edilicia — un séptimo piso sigue siendo altura real, no un número. Eso no se construye: es una condición histórica de la zona que se va a perder cuando llegue la próxima ola constructiva. Comprar ahora es comprar en la ventana correcta.</p>
       </div>
       <div class="pilar__chips">
@@ -3365,9 +3411,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
     <div class="pilar__text reveal">
       <div class="pilar__chapter">El barrio</div>
-      <h2 class="pilar__title">Liniers no está<br>de moda. Por eso<br>todavía tiene<br><em>silencio.</em></h2>
+      <h2 class="pilar__title">Liniers no está de moda. Por eso todavía tiene <em>silencio.</em></h2>
       <div class="pilar__body">
-        <p>Poca densidad. Autos que circulan sin embotellamiento. Comercios a escala humana. Sin las demoras del tráfico de Corrientes o Santa Fe. Sin las torres apiladas una contra otra.</p>
+        <ul class="pilar__lista">
+          <li>Poca densidad habitacional.</li>
+          <li>Autos que circulan sin embotellamiento.</li>
+          <li>Comercios a escala humana.</li>
+          <li>Sin las demoras del tráfico de Av. Corrientes o Av. Santa Fe.</li>
+          <li>Sin las torres apiladas una contra otra.</li>
+        </ul>
         <p>Para quien conoce la zona — y vos la conocés — eso vale más que cualquier barrio cool.</p>
       </div>
       <div class="pilar__chips">
