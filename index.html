@@ -2717,7 +2717,8 @@ em {
   line-height: 1.5;
   text-align: center;
   color: rgba(255,255,255,.9);
-  background: rgba(45,138,95,.15);
+  background: var(--orange);
+  margin-bottom: 50px;
 }
 
 .cta-form__confirm.is-visible {
@@ -4274,13 +4275,7 @@ em {
       btn.disabled = true;
       btn.style.opacity = '0.6';
 
-      // Mensaje WhatsApp (fallback siempre disponible)
-      let waMsg = `Hola, soy ${nombre}. Me interesa la propiedad en Larrazabal 545 (AAP7883154) que vi en la web.`;
-      if (horario) waMsg += ` Mi disponibilidad: ${horario}.`;
-      waMsg += ` Mi contacto: ${contacto}. Email: ${email}.`;
-      const waUrl = `https://wa.me/5491125466099?text=${encodeURIComponent(waMsg)}`;
-
-      // Enviar a Tokko vía CF Function (fallo silencioso — WhatsApp cubre igual)
+      // Enviar a Tokko vía CF Function
       try {
         await fetch('/api/lead', {
           method:  'POST',
@@ -4289,8 +4284,7 @@ em {
         });
       } catch (_) { /* silencioso */ }
 
-      // Abrir WhatsApp y confirmar
-      window.open(waUrl, '_blank');
+      // Mostrar confirmación
       ctaForm.style.display = 'none';
       ctaConfirm.classList.add('is-visible');
     });
