@@ -64,7 +64,8 @@ export async function onRequestPost({ request, env }) {
     email:    email,
     phone:    contacto,
     text:     text,
-    property: TOKKO_PROPERTY_ID,
+    property: `/api/v1/property/${TOKKO_PROPERTY_ID}/`,
+    tags:     ['landing-larrazabal'],
   };
 
   // 4. Enviar a Tokko
